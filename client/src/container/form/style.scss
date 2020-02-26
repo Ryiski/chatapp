@@ -31,38 +31,49 @@ form {
 				max-width: 500px;
 				margin: 10px 0;
 				height: 45px;
-            padding: 5px 15px;
+				padding: 5px 15px;
 				border-radius: 2px;
 				outline: none;
 				border: none;
 				background: #e8ebed;
 				color: #576366;
-            font-size: 14px;
-            box-sizing: border-box;
+				font-size: 14px;
+				box-sizing: border-box;
 			}
 
 			& button {
 				font-size: 15px;
-            cursor: pointer;
-            color: #fff;
-            background-color: #333333;
-            padding: 5px 15px;
-            border-radius: 10px;
+				cursor: pointer;
+				color: #fff;
+				background-color: #333333;
+				padding: 5px 15px;
+				border-radius: 10px;
 				border: none;
-            outline: none;
+				outline: none;
+				float: left;
+			}
+
+			& a {
+				font-size: .8em;
+				align-self: flex-end;
+				text-decoration: none;
+				
+				&:hover{
+					color: blue;
+				}
 			}
 		}
 	}
 
 	& .form-errors {
 		width: 100%;
-      text-align: center;
+		text-align: center;
 
 		& p {
 			display: inline-block;
 			width: 100%;
-         margin: 0;
-         padding: 5px 0;
+			margin: 0;
+			padding: 5px 0;
 			color: red;
 		}
 	}

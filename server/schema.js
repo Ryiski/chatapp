@@ -11,6 +11,7 @@ input MessageInput {
 }
 
 type Messages {
+    id:ID!
     userID: ID!
     userName:String!
     message: String!
@@ -69,7 +70,7 @@ type Mutation {
 
     newMessage(
         messageInput: MessageInput!
-    ):Boolean!
+    ):Boolean
 
 }
 

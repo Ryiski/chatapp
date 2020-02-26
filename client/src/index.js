@@ -14,11 +14,22 @@ import { getMainDefinition } from 'apollo-utilities';
 
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:5000'
+  uri: 'http://localhost:5000/v1/graphql',
+  credentials: 'same-origin',
+  request: operation =>{
+    const token = localStorage.getItem('token');
+    operation.setContext({
+      headers:{
+        authorization: token ? token : null,
+      }
+    })
+  },
+    
+  
 });
 
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:5000/graphql`,
+  uri: `ws://192.168.1.10:5000/graphql`,
   options: {
     reconnect: true
   }
@@ -39,8 +50,14 @@ const link = split(
 );
 
 const client = new ApolloClient({
-  
   link,
+  // request: operation => {
+  //   operation.setContext({
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem('token')}`
+  //     },
+  //   });
+  // },  
   cache: new InMemoryCache()
 });
 

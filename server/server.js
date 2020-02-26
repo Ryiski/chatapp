@@ -1,5 +1,7 @@
 require('dotenv').config();
-const { ApolloServer, PubSub } = require('apollo-server');
+const http = require('http');
+const { ApolloServer, PubSub } = require('apollo-server-express');
+const express = require('express');
 const jwt = require('jsonwebtoken');
 const typeDefs = require('./schema') ;
 const resolvers = require('./resolvers') ;
@@ -7,11 +9,15 @@ const pubSub = new PubSub();
 const PORT = process.env.PORT || 5000;
 const authKey = process.env.AUTH_SECRET;
 const authKeyRf = process.env.AUTH_SECRET_RF;
+const path = require('path');
+
+const app = express();
+app.use(express.static(path.join(__dirname, '../client/build')));
+
 
 const server = new ApolloServer({
-    debug: false,
-    cors:true,
-    path:'/graphql',
+    // debug: false,
+    
     typeDefs, 
     resolvers,
     context:(req,res) => ({
@@ -25,11 +31,28 @@ const server = new ApolloServer({
       
             return { token, rfToken }
           },
-    })
+    }),
+    introspection: true,
+    playground: true
 });
 
-
-server.listen(PORT).then(({subscriptionsUrl, url})=> {
-    console.log(`Server Listing on ${url}`)
-    console.log(`Subscriptions Listing on ${subscriptionsUrl}`)
+server.applyMiddleware({
+    app,
+    path:'/v1/graphql'
 })
+
+const httpServer = http.createServer(app);
+server.installSubscriptionHandlers(httpServer);
+
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+httpServer.listen(PORT, () => {
+    console.log(`
+    Server ready at http://localhost:${PORT}${server.graphqlPath}
+    \n
+    Subscriptions ready at ws://localhost:${PORT}${server.subscriptionsPath}
+    `);
+  })

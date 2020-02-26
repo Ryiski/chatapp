@@ -77,6 +77,18 @@ form .container .signup-form button {
   border-radius: 10px;
   border: none;
   outline: none;
+  float: left;
+}
+
+form .container .signup-form a {
+  font-size: .8em;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  text-decoration: none;
+}
+
+form .container .signup-form a:hover {
+  color: blue;
 }
 
 form .form-errors {

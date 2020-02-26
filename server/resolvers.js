@@ -16,11 +16,15 @@ const resolvers = {
         }
     },
     Query: {
-        getMessages: (_, __, ___) => db.messages.list(),
+        getMessages: (_, __, ___) => {
+            
+            return db.messages.list()},
     },
     Mutation: {
         userRegister: async (root, { newUserInput }, { genToken }) => {
+            
             let { userName, password } = newUserInput;
+            // console.log("TCL: newUserInput", newUserInput)
 
             const doesUserExist = db.users.list().filter((user) => user.userName === userName)[0];
            
@@ -78,6 +82,7 @@ const resolvers = {
             }
         },
         newMessage: (_, { messageInput }, { pubSub }) => {
+            console.log("TCL: newUserInput", messageInput)
             messageInput.moment = `${moment().format('l')} ${moment().format('LT')}`
             db.messages.create({ ...messageInput });
             pubSub.publish('NEW_MESSAGE', { newMessage: { ...messageInput } });
