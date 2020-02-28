@@ -35,12 +35,12 @@ const SignIn = ({ _signIn, history, ...rest }) => {
         try{
 
            const { data:{userLogin:{ id, userName, token } } } = await login();
+           
            _signIn({ id, userName }, token);
 
            history.push('/');
 
         }catch(errors){
-        console.log("TCL: _onSubmit -> errors", errors)
 
             const signInErrors  = errors.graphQLErrors.reduce((acc,error) => {
                 acc.push(error.message);

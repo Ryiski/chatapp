@@ -2,112 +2,106 @@
 	background-color: #e1f4f3;
 	width: 95%;
 	height: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	& .inner-container {
-	    background-color: #fff;
-        height: 95%;
-        width: 95%;
-        padding: 10px;
-        border-radius: 20px;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: stretch;
+		background-color: #fff;
+		height: 95%;
+		width: 95%;
+		padding: 10px;
+		border-radius: 20px;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: stretch;
 
-        & .online-list {
-            background-color: red;
-            flex: 1;
-            margin-right: 10px;
-            overflow-y: scroll;
-            overflow-x: hidden;
-            -ms-overflow-style: none; /* IE 10+ */ 
-            scrollbar-width: none; /* Firefox */  
-            border: 2px black solid;
-            border-radius: 20px;
-            
-            & p {
-                position: sticky;
-                top: 0;
-                background-color: #ffffff;
-            }
-        }
+		& .online-list {
+			background-color: red;
+			flex: 1;
+			margin-right: 10px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			-ms-overflow-style: none; /* IE 10+ */
+			scrollbar-width: none; /* Firefox */
+			border: 2px black solid;
+			border-radius: 20px;
 
-        & .chat-container {
-            border-radius: 20px;
-            min-width: 90%;
-            overflow-y: scroll;
-            overflow-x: hidden;
-            -ms-overflow-style: none; /* IE 10+ */ 
-            scrollbar-width: none; /* Firefox */
-            position: relative;
-            
-            & .message-list{
-                width: 100%;
-                height: calc(100% - 58px);
-                padding: 10px;
-                margin: 0;
-                background-color: #333333;
-                position: absolute;
-                top: 0;
-                box-sizing: border-box;
-                overflow-y: scroll;
-                color: rgb(0, 0, 0);
-            }
-            
-            & .chat-input {
-                position: absolute;
-                bottom: 0;
-                display: flex;
-                background-color: #706c61;
-                width: 100%;
-                padding: 10px;
-                box-sizing: border-box;
-                align-items: center;
+			& p {
+				position: sticky;
+				top: 0;
+				background-color: #ffffff;
+			}
+		}
 
-                & p {
-                    display: inline-block;
-                    height: 100%;
-                    max-height: 200px;
-                    width: 100%;
-                    background-color: rgb(209, 199, 199);
-                    padding: 10px;
-                    margin: 0 10px 0 0;
-                    border-radius: 20px;
-                    overflow: scroll;
+		& .chat-container {
+			border-radius: 20px;
+			min-width: 90%;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			-ms-overflow-style: none; /* IE 10+ */
+			scrollbar-width: none; /* Firefox */
+			position: relative;
 
-                    &:empty::before {
-                        content: attr(data-placeholder);
-                        color: rgb(104, 104, 112);
-                    }
-                }
+			& .message-list {
+				width: 100%;
+				height: calc(100% - 58px);
+				padding: 10px;
+				margin: 0;
+				background-color: #333333;
+				position: absolute;
+				top: 0;
+				box-sizing: border-box;
+				overflow-y: scroll;
+				color: rgb(0, 0, 0);
+			}
 
-                & button {
-                    height: 38px;
-                    width: 38px;
-                    border-radius: 100%;
-                    padding: 10px;
-                    border: none;
-                    outline:none;
-                    cursor: pointer;
+			& .chat-input {
+				position: absolute;
+				bottom: 0;
+				display: flex;
+				background-color: #706c61;
+				width: 100%;
+				padding: 10px;
+				box-sizing: border-box;
+				align-items: center;
 
-                    &:hover svg path {
-                        fill: rgb(197, 165, 116);
-                    }
-                }
+				& textarea {
+					width: 100%;
+					background-color: rgb(209, 199, 199);
+					padding: 10px;
+					margin: 0 10px 0 0;
+					border-radius: 20px;
+					resize: none;
+					border: none;
+					outline: none;
+					box-shadow: none;
+				}
 
-                & svg {
-                    height: 100%;
-                    width: 100%;
-                }
-            }
-        }
+				& button {
+					height: 38px;
+					width: 38px;
+					border-radius: 100%;
+					padding: 10px;
+					border: none;
+					outline: none;
+					cursor: pointer;
+
+					&:hover svg path {
+						fill: rgb(197, 165, 116);
+					}
+				}
+
+				& svg {
+					height: 100%;
+					width: 100%;
+				}
+			}
+		}
 	}
 }
 
-::-webkit-scrollbar { 
-    display: none; /* Chrome Safari */
-  }
-
+::-webkit-scrollbar {
+	display: none; /* Chrome Safari */
+}

@@ -12,9 +12,10 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
 
-
+const gqlUri = `http://localhost:5000/graphql`
+const wsUri = `ws://localhost:5000/graphql`
 const httpLink = new HttpLink({
-  uri: 'http://localhost:5000/v1/graphql',
+  uri: gqlUri,
   credentials: 'same-origin',
   request: operation =>{
     const token = localStorage.getItem('token');
@@ -29,7 +30,7 @@ const httpLink = new HttpLink({
 });
 
 const wsLink = new WebSocketLink({
-  uri: `ws://192.168.1.10:5000/graphql`,
+  uri: wsUri,
   options: {
     reconnect: true
   }
@@ -71,3 +72,5 @@ render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+export default gqlUri;
