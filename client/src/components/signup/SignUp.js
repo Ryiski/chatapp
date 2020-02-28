@@ -17,6 +17,7 @@ const Signup = ({ _signIn, history, ...rest }) => {
                 }){
                     id
                     userName
+                    token
                 }
         }
     `;
@@ -30,12 +31,13 @@ const Signup = ({ _signIn, history, ...rest }) => {
         e.preventDefault();
 
         try{
-            const { data:{ id, userName, token} } = await newUser({ variables: { userName:username, password } })
+            const { data:{userRegister:{ id, userName, token} }} = await newUser({ variables: { userName:username, password } });
             
             _signIn({ id, userName }, token);
 
         }catch(errors){
-        console.dir(errors)
+
+            console.dir(errors);
 
             const signUpErrors  = errors.graphQLErrors.reduce((acc,error) => {
                 acc.push(error.message);

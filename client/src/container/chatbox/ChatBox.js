@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import gql from 'graphql-tag';
-import { useSubscription, useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import Message from '../../components/chatmessage/Message';
 import ChatForm from './ChatForm';
 import './style.css';
@@ -19,8 +19,7 @@ const ChatBox =  ({currentUser}) => {
         }
     `;
 
-    const { loading, data } =  useQuery(GET_ALL_MESSAGES);
-    console.log("TCL: ChatBox -> data", data)
+    const { data } =  useQuery(GET_ALL_MESSAGES);
     
     let messagesComponents = [];
     if(data){
