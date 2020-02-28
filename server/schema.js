@@ -11,11 +11,11 @@ input MessageInput {
 }
 
 type Messages {
-    id:ID!
-    userID: ID!
-    userName:String!
-    message: String!
-    moment: String!
+    id:ID
+    userID: ID
+    userName:String
+    message: String
+    moment: String
 }
 
 #/**************/
@@ -41,6 +41,7 @@ type LogInUserPayload {
 type NewUserPayload {
     id:ID
     userName: String
+    token: String
 }
 
 input NewUserInput {
@@ -64,10 +65,6 @@ type Mutation {
         logInUserInput: logInUserInput!
     ): LogInUserPayload
 
-    # signOutUser(
-    #     logInUserInput: logInUserInput!
-    # ): Boolean
-
     newMessage(
         messageInput: MessageInput!
     ):Boolean
@@ -75,7 +72,7 @@ type Mutation {
 }
 
 type Subscription {
-    newMessage: Messages!
+    newMessage(userId: ID): Messages
 }
 `
 

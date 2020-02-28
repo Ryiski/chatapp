@@ -35,13 +35,14 @@ const resolvers = {
             } else {
 
                 if(userName === '') throw new Error('Please select a awesome username')
-                if(password.length < 8) throw new Error('Password much contain 8 latters')
+                // if(password.length < 8) throw new Error('Password much contain 8 latters')
 
                 newUserInput.password = await bcrypt.hashSync(password, 10);
 
-                const { rfToken } = genToken({ userName, password });
+                const { rfToken, token } = genToken({ userName, password });
 
                 newUserInput.refreshToken = rfToken;
+                newUserInput.token = token;
 
                 const id = db.users.create({ ...newUserInput });
 
@@ -82,7 +83,6 @@ const resolvers = {
             }
         },
         newMessage: (_, { messageInput }, { pubSub }) => {
-            console.log("TCL: newUserInput", messageInput)
             messageInput.moment = `${moment().format('l')} ${moment().format('LT')}`
             db.messages.create({ ...messageInput });
             pubSub.publish('NEW_MESSAGE', { newMessage: { ...messageInput } });
