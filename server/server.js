@@ -38,7 +38,7 @@ const server = new ApolloServer({
 
 server.applyMiddleware({
     app,
-    path:'/v1/graphql'
+    path:'/graphql'
 })
 
 const httpServer = http.createServer(app);
