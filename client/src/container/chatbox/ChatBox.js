@@ -33,6 +33,8 @@ const ChatBox =  ({currentUser}) => {
                 isRight={v.userID === currentUser.id}
                 
             />));
+            document.querySelector('#scroll').scrollIntoView();
+
     }
 
     return (

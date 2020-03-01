@@ -56,8 +56,9 @@ const ChatForm = ({ currentUser, children }) => {
                     <span class="time-stamp">${moment}</span>
                 </div>
             </li>`;
-
-            document.querySelector('.message-list').insertAdjacentHTML('beforeend', li);
+            const span = document.querySelector('#scroll')
+            span.insertAdjacentHTML('beforebegin ', li);
+            span.scrollIntoView();
         }
         setMessage('');
     },[data,currentUser.id,loading]);
@@ -66,6 +67,8 @@ const ChatForm = ({ currentUser, children }) => {
         e.preventDefault();
 
         try {
+            if(message.trim() === ''){
+
             const mutation = `
             mutation sendMessage(
                 $userId: ID! 
@@ -88,6 +91,8 @@ const ChatForm = ({ currentUser, children }) => {
             await fetchGraphQL(mutation,variables);
             
             document.querySelector('textarea').value = '';
+        }
+
 
         } catch (err) {
             console.dir(err)
@@ -99,6 +104,7 @@ const ChatForm = ({ currentUser, children }) => {
         <Fragment>
             <ul className="message-list">
                 {children}
+                <span id="scroll"></span>
             </ul>
             <div className="chat-input">
                 <form onSubmit={_onSubmit}>
