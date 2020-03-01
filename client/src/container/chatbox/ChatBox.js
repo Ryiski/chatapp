@@ -38,12 +38,6 @@ const ChatBox =  ({currentUser}) => {
     return (
         <div className="chat-box-container">
             <div className="inner-container">
-                {/* <div >
-                    <p>Online Users</p>
-                    <ul className="online-list">
-                        {[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10].reverse().map(v => <li>{v}</li>)}
-                    </ul>
-                </div> */}
                 <div className="chat-container">
                     <ChatForm currentUser={currentUser}>
                         {messagesComponents}
