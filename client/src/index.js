@@ -12,8 +12,8 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
 
-const gqlUri = `http://localhost:5000/graphql`
-const wsUri = `ws://localhost:5000/graphql`
+const gqlUri = `https://chat3pp.herokuapp.com/graphql`
+const wsUri = `ws://chat3pp.herokuapp.com/graphql`
 const httpLink = new HttpLink({
   uri: gqlUri,
   credentials: 'same-origin',
