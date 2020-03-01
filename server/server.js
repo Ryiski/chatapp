@@ -9,7 +9,7 @@ const pubSub = new PubSub();
 const PORT = process.env.PORT || 5000;
 const authKey = process.env.AUTH_SECRET || 'imNotAGood-AUTH_SECRET-Key';
 const authKeyRf = process.env.AUTH_SECRET_RF || 'imNotAGood-AUTH_SECRET_RF-Key';
-const isDev = process.env.ENV ? true:false;
+const isDev = process.env.ENV === 'development' ? true:false;
 const path = require('path');
 
 const app = express();
