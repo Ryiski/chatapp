@@ -1,6 +1,6 @@
 # CHATAPP
 
-The name of the repo say's it all, this is a simple chatapp. [live preview]:https://chat3pp.herokuapp.com/
+The name of the repo say's it all, this is a simple chatapp. [live preview](https://chat3pp.herokuapp.com/)
 
 YAP!!
 
