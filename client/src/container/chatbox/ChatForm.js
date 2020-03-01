@@ -57,7 +57,7 @@ const ChatForm = ({ currentUser, children }) => {
                 </div>
             </li>`;
             const span = document.querySelector('#scroll')
-            span.insertAdjacentHTML('beforebegin ', li);
+            span.insertAdjacentHTML('beforebegin', li);
             span.scrollIntoView();
         }
         setMessage('');
