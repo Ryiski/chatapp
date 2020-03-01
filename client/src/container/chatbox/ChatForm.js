@@ -67,7 +67,7 @@ const ChatForm = ({ currentUser, children }) => {
         e.preventDefault();
 
         try {
-            if(message.trim() === ''){
+            if(message.trim() !== ''){
 
             const mutation = `
             mutation sendMessage(
