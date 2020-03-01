@@ -7,9 +7,10 @@ YAP!!
 A simple real time chatapp, where you can interact with you're friends or family, if you're lucky, you will find a stranger 😉
 
 ![alt text](https://media.makeameme.org/created/stranger-danger-safety.jpg)
-(Don't accept candy's from stranger and don't place in sensitive into the chat **chat is saved into a json file**)
 
-### Stack Used
+(Don't accept candy's from stranger and don't place in sensitive info in the chat)
+
+### Teach Used
 * React
 * apollo client
 * notarealdb
